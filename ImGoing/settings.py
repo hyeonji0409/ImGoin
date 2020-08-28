@@ -27,7 +27,7 @@ SECRET_KEY = 'wh(3c9t4vc$30tf3tfu7(q+&tqsnz6rjl1_p^v!5yz)rbt&2^^'
 DEBUG = True
 #DEBUG = bool( os.environ.get('DJANGO_DEBUG', True) )
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
