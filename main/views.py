@@ -8,3 +8,6 @@ def location(request):
 
 def write(request):
     return render(request, 'write.html')
+
+def account(request):
+    return render(request, 'account.html')

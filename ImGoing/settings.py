@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'accounts.apps.AccountsConfig',
     'django.contrib.sites',
     'main.apps.MainConfig',
     'django.contrib.admin',
@@ -48,7 +49,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
 
     #provider 구글 페이스북 카톡 깃허브 등 소셜로그인 제공업체
-    'allauth.socialaccount.providers.kakao',
+    'allauth.socialaccount.providers.google',
 ]
 
 MIDDLEWARE = [
@@ -148,8 +149,6 @@ AUTHENTICATION_BACKENDS = (
 )
 
 SITE_ID = 1
-
-# 로그인 후 호출 url
 LOGIN_REDIRECT_URL = '/'
 
 import dj_database_url
