@@ -1,0 +1,487 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+
+
+
+<!-- jQuery -->
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+
+
+<!-- Bootstrap CSS -->
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+
+
+<title>board</title>
+
+<header id="fixed-bar">
+    <div id="fixed-bar-wrap">
+        <h1 id="fixed-bar-logo-title">
+            <a href="https://127.0.0.1:8000">
+                <span class="sr-only">내가 가는 중</span>
+                <img class="fixed-logo" src="https://d1unjqcospf8gs.cloudfront.net/assets/home/base/header/logo-basic-00b7e471b721ce9db8b0758c05a84684413c8aef1ad54caa0f3fcbe7328c947f.svg" alt="내가 가는 중" />
+            </a>
+        </h1>
+        <section id="fixed-bar-search">
+            <div class="search-input-wrap">
+                <span class="sr-only">검색</span>
+                <input type="text" name="header-search-input" id="header-search-input" class="fixed-search-input" placeholder="search yout location or products" />
+                <button id="header-search-button">
+                    <img src="https://d1unjqcospf8gs.cloudfront.net/assets/home/base/header/search-icon-db20a2e9e6b0fc922b44982d451cf1c967c86e8e8df270e71c300832a6f31f1a.svg" alt="Search" class="fixed-search-icon" />
+                </button>
+            </div>
+        </section>
+    </div>
+</header>
+
+<style>
+    body {
+        font-family: "Apple SD Gothic Neo", "Malgun Gothic", 'Nanum Gothic', sans-serif;
+        min-height: calc(100% - 77px);
+        position: relative;
+    }
+
+   #fixed-bar{
+       width: 100%;
+       position: fixed;
+       top: 0;
+       right: 0;
+       left: 0;
+       z-index: 100;
+       background-color: #ffffff;
+   }
+    #fixed-bar-wrap{
+        width: 980px;
+        margin: 0 auto;
+        padding: 17px 0;
+        position: relative;
+    }
+
+    .fixed-logo{
+        width: 132px;
+        vertical-align: text-bottom;
+        margin-bottom: 5px;
+    }
+
+    #fixed-bar-search{
+        position: absolute;
+        left: 150px;
+        top: 35px;
+        border-radius: 4px;
+        border: solid 1px #eb3b3b;
+        text-decoration: none;
+        padding: 1px 8px 1px 14px;
+        height: 40px;
+    }
+
+    .search-input-wrap{
+        position: relative;
+        padding-right: 40px;
+    }
+
+    .sr-only{
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        border: 0;
+    }
+
+    .fixed-search-input{
+        width: 440px;
+        height: 38px;
+        border: none;
+        font-size: 18px;
+        color: #212529;
+        margin-right: 6px;
+    }
+
+    button{
+        background: none;
+        color: inherit;
+        border: none;
+        padding: 0;
+        font: inherit;
+        cursor: pointer;
+        outline: inherit;
+    }
+
+    .fixed-search-icon{
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 26px;
+        height: 26px;
+        fill: #eb3b3b;
+        padding: 7px 7px;
+    }
+    .map{
+        width: 980px;
+        background-color: aqua;
+        color: black;
+        font-size: 18px;
+    }
+
+    #header-top{
+        position: relative;
+        background-color: #ffe6e3;
+        color: #212529;
+    }
+
+    #header-title-wrap{
+        position: relative;
+        width: 980px;
+        margin: 0 auto;
+        padding-top: 200px;
+        padding-bottom: 431px;
+    }
+
+    #header-title{
+        text-align: center;
+        font-size: 40px;
+        font-weight: 600;
+        line-height: 1.35;
+        letter-spacing: -0.6px;
+    }
+
+    #header-title-desc{
+        text-align: center;
+        margin-top: 8px;
+        font-size: 17px;
+        line-height: 1.6;
+        letter-spacing: -0.6px;
+    }
+
+    #hot-articles{
+        position: relative;
+        z-index: 1;
+        background-color: white;
+        padding: 120px 0;
+    }
+
+    h3{
+        text-align: center;
+    }
+
+    .title-line-divider{
+        width: px;
+        border-top: 2px solid #eb3b3b;
+        margin: 0 auto;
+        margin-bottom: 50px;
+    }
+
+    .cards-wrap{
+        width: 980px;
+        margin-left: 19.3%;
+    }
+    .card-top{
+        position: relative;
+        text-align: left;
+        display: inline-block;
+        border-radius: 8px;
+        border: 1px solid #e9ecef;
+        width: calc(25% - 34px);
+        margin-left: 30px;
+        margin-bottom: 40px;
+    }
+    .card-link{
+        text-decoration: none;
+        color: #212529;
+    }
+
+    .card-photo{
+        width: 100%;
+        position: relative;
+        height: 160px;
+        overflow: hidden;
+        border-radius: 8px 8px 0 0;
+        background-color: #f8f9fa;
+    }
+
+    .card-desc{
+        padding: 16px;
+        padding-bottom: 0;
+    }
+
+    .card-title{
+        font-size: 17px;
+        font-weight: 600;
+        letter-spacing: -0.6px;
+        color: #212529;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        margin-bottom: 6px;
+        line-height: 1.2;
+    }
+
+    .card-region-name{
+        font-size: 15px;
+        color: #868e96;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        margin-bottom: 8px;
+        line-height: 1.3;
+    }
+
+    .card-price{
+        font-size: 15px;
+        font-weight: 600;
+        padding-bottom: 8px;
+        border-bottom: 1px solid #e9ecef;
+        line-height: 1.3;
+        color: #eb3b3b;
+    }
+
+    #town-banner{
+        text-align: left;
+        padding: 48px 0;
+        background-color: #f1bbb4;
+    }
+
+    #town-banner-wrap{
+        position: relative;
+        width: 980px;
+        margin: 0 auto;
+    }
+
+    .town-logo{
+        width: 154px;
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .town-banner-desc{
+        columns: #212529;
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 1.6;
+        margin-bottom: 12px;
+    }
+
+    .town-link-button{
+        display: block;
+        text-align: center;
+        background-color: #eb3b3b;
+        width: 240px;
+        padding: 14px 0;
+        font-size: 18px;
+        font-weight: 600;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+    }
+
+    .town-illust{
+        position: absolute;
+        bottom: 8px;
+        right: 30px;
+        width: 322px;
+    }
+
+    .mb-3{
+        margin-top: 10px;
+    }
+</style>
+
+<script>
+
+   $(document).on('click', '#btnSave', function(e){
+
+      e.preventDefault();
+
+      
+
+      $("#form").submit();
+
+   });
+
+   
+
+   $(document).on('click', '#btnList', function(e){
+
+      e.preventDefault();
+
+      
+
+      location.href="${pageContext.request.contextPath}/board/getBoardList";
+
+   });
+
+</script>
+
+<style>
+
+body {
+
+  padding-top: 100px;
+
+  padding-bottom: 30px;
+
+}
+
+
+
+</style>
+
+</head>
+
+<body>
+
+   <article>
+
+      <div class="container" role="main">
+
+         <h2>구매 글 작성</h2>
+            <select name="region1" id="region1" onchange="changeRegion(&#39;r1&#39;, this.value)" class="hot-articles-nav-select"><option value="">지역을 선택하세요</option>
+                <option value="서울특별시">서울특별시</option>
+                <option value="부산광역시">부산광역시</option>
+                <option value="대구광역시">대구광역시</option>
+                <option value="인천광역시">인천광역시</option>
+                <option value="광주광역시">광주광역시</option>
+                <option value="대전광역시">대전광역시</option>
+                <option value="울산광역시">울산광역시</option>
+                <option value="세종특별자치시">세종특별자치시</option>
+                <option value="경기도">경기도</option>
+                <option value="강원도">강원도</option>
+                <option value="충청북도">충청북도</option>
+                <option value="충청남도">충청남도</option>
+                <option value="전라북도">전라북도</option>
+                <option value="전라남도">전라남도</option>
+                <option value="경상북도">경상북도</option>
+                <option value="경상남도">경상남도</option>
+                <option value="제주특별자치도">제주특별자치도</option></select>
+
+                
+                <select name="region1" id="region1" onchange="changeRegion(&#39;r1&#39;, this.value)" class="hot-articles-nav-select"><option value="">카테고리를 선택하세요</option>
+                    <option value="여성의류">여성의류</option>
+                    <option value="패션잡화">패션잡화</option>
+                    <option value="남성의류">남성의류</option>
+                    <option value="디지털/가전">디지털/가전</option>
+                    <option value="도서/티켓/취미/애완">도서/티켓/취미/애완</option>
+                    <option value="생활/문구/가구/식품">생활/문구/가구/식품</option>
+                    <option value="스타굿즈">스타굿즈</option>
+                    <option value="유아/출산">유아/출산</option>
+                    <option value="뷰티/미용">뷰티/미용</option>
+                    <option value="스포츠/레저">스포츠/레저</option>
+                    <option value="차량/오토바이">차량/오토바이</option>
+                    <option value="기타">기타</option></select>
+
+
+         <form name="form" id="form" role="form" method="post" action="${pageContext.request.contextPath}/board/saveBoard">
+
+            <div class="mb-3">
+
+               <label for="title">제목</label>
+
+               <input type="text" class="form-control" name="title" id="title" placeholder="제목을 입력해 주세요">
+
+            </div>
+
+            
+
+            <div class="mb-3">
+
+               <label for="price">판매 가격</label>
+
+               <input type="text" class="form-control" name="price" id="price" placeholder="가격을 입력해 주세요">
+
+            </div>
+
+            
+
+            <div class="mb-3">
+
+               <label for="content">내용</label>
+
+               <textarea class="form-control" rows="5" name="content" id="content" placeholder="내용을 입력해 주세요" ></textarea>
+
+            </div>
+
+            <div class="file_input">
+                    <label>
+                        File Attach
+                        <input type="file" onchange="javascript:document.getElementById('file_route').value=this.value">
+                    </label>
+                    <input type="text" readonly="readonly" title="File Route" id="file_route">
+                </div>
+                
+                <style>
+                .file_input label {
+                    position:relative;
+                    cursor:pointer;
+                    display:inline-block;
+                    vertical-align:middle;
+                    overflow:hidden;
+                    width:100px;
+                    height:30px;
+                    background:#777;
+                    color:#fff;
+                    text-align:center;
+                    line-height:30px;
+                }
+                .file_input label input {
+                    position:absolute;
+                    width:0;
+                    height:0;
+                    overflow:hidden;
+                }
+                .file_input input[type=text] {
+                    vertical-align:middle;
+                    display:inline-block;
+                    width:400px;
+                    height:28px;
+                    line-height:28px;
+                    font-size:11px;
+                    padding:0;
+                    border:0;
+                    border:1px solid #777;
+                }
+                </style>
+
+            <div class="mb-3">
+
+               <label for="tag">TAG</label>
+
+               <input type="text" class="form-control" name="tag" id="tag" placeholder="태그를 입력해 주세요">
+
+            </div>
+
+         
+
+         </form>
+
+         <div >
+
+            <button type="button" class="btn btn-sm btn-primary" id="btnSave">저장</button>
+
+            <button type="button" class="btn btn-sm btn-primary" id="btnList">목록</button>
+
+         </div>
+
+      </div>
+
+   </article>
+
+</body>
+
+</html>
+
+{%endblock%}

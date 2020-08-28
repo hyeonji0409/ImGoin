@@ -1,0 +1,345 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    #header-top{
+            position: relative;
+            background-color: #ffe6e3;
+            color: #212529;
+        }
+
+        #header-title-wrap{
+            position: relative;
+            width: 980px;
+            margin: 0 auto;
+            padding-top: 200px;
+            padding-bottom: 431px;
+        }
+
+        #header-title{
+            text-align: center;
+            font-size: 40px;
+            font-weight: 600;
+            line-height: 1.35;
+            letter-spacing: -0.6px;
+        }
+
+        #header-title-desc{
+            text-align: center;
+            margin-top: 8px;
+            font-size: 17px;
+            line-height: 1.6;
+            letter-spacing: -0.6px;
+        }
+
+        #hot-articles{
+            position: relative;
+            z-index: 1;
+            background-color: white;
+            padding: 120px 0;
+        }
+
+        h3{
+            text-align: center;
+        }
+
+        .title-line-divider{
+            width: 95px;
+            border-top: 2px solid #eb3b3b;
+            margin: 0 auto;
+            margin-bottom: 50px;
+        }
+
+        .cards-wrap{
+            width: 980px;
+            margin: auto;
+            text-align: center;
+        }
+        .card-top{
+            position: relative;
+            text-align: left;
+            display: inline-block;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+            width: calc(25% - 34px);
+            margin-left: 15px;
+            margin-bottom: 40px;
+        }
+        .card-link{
+            text-decoration: none;
+            color: #212529;
+        }
+
+        .card-photo{
+            width: 100%;
+            position: relative;
+            height: 160px;
+            overflow: hidden;
+            border-radius: 8px 8px 0 0;
+            background-color: #f8f9fa;
+        }
+
+        .card-desc{
+            padding: 16px;
+            padding-bottom: 0;
+        }
+
+        .card-title{
+            font-size: 17px;
+            font-weight: 600;
+            letter-spacing: -0.6px;
+            color: #212529;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            margin-bottom: 6px;
+            line-height: 1.2;
+        }
+
+        .card-region-name{
+            font-size: 15px;
+            color: #868e96;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .card-price{
+            font-size: 15px;
+            font-weight: 600;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #e9ecef;
+            line-height: 1.3;
+            color: #eb3b3b;
+        }
+
+        .hot-articles-navigation{
+            width: 980;
+            margin: 0 auto;
+            text-align: right;
+            margin-bottom: 30px;
+        }
+
+        .hot-articles-nav-select{
+            appearance: none;
+            padding: 10px 44px 10px 20px;
+            background-color: #ffe6e3;
+            border: solid 1px #e9ecef;
+            font-size: 17px;
+            letter-spacing: -0.6px;
+            text-align: left;
+        }
+</style>
+
+   <meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="cZdFHY2mg7DCkA+dDwoKQ31mDpRfjOuZzkx6r7gW6+U6eoV6S1J/QXIaBKF/3ZFkCgfyd82xP3I7t9Wg39Y5ww==" />
+  <script>
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '1463621440622064',
+        xfbml      : true,
+        version    : 'v2.4'
+      });
+    };
+
+    (function(d, s, id){
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) {return;}
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  </script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-64551386-2', 'auto');
+     ga('set', 'dimension2', 'true');  ga('send', 'pageview'); </script>
+    <!-- Facebook Pixel Code -->
+    <script>
+      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+              n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+        n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+              document,'script','//connect.facebook.net/en_US/fbevents.js');
+
+      fbq('init', '992961397411651');
+      fbq('track', "PageView");</script>
+    <noscript><img height="1" width="1" style="display:none"
+                   src="https://www.facebook.com/tr?id=992961397411651&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Facebook Pixel Code -->
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PJSK4QL');
+</script>
+
+<section id="hot-articles">
+    <h3>인기 상품</h3>
+     <div class="title-line-divider"></div>
+     <nav id="hot-articles-navigation">
+         <select name="region1" id="region1" onchange="changeRegion(&#39;r1&#39;, this.value)" class="hot-articles-nav-select"><option value="">지역을 선택하세요</option><option value="서울특별시">서울특별시</option>
+            <option value="부산광역시">부산광역시</option>
+            <option value="대구광역시">대구광역시</option>
+            <option value="인천광역시">인천광역시</option>
+            <option value="광주광역시">광주광역시</option>
+            <option value="대전광역시">대전광역시</option>
+            <option value="울산광역시">울산광역시</option>
+            <option value="세종특별자치시">세종특별자치시</option>
+            <option value="경기도">경기도</option>
+            <option value="강원도">강원도</option>
+            <option value="충청북도">충청북도</option>
+            <option value="충청남도">충청남도</option>
+            <option value="전라북도">전라북도</option>
+            <option value="전라남도">전라남도</option>
+            <option value="경상북도">경상북도</option>
+            <option value="경상남도">경상남도</option>
+            <option value="제주특별자치도">제주특별자치도</option>
+        </select>
+        <select name="region2" id="region2" disabled="disabled" onchange="changeRegion(&#39;r2&#39;, this.value)" class="hot-articles-nav-select"><option value="">동네를 선택하세요</option><option value="서울특별시">서울특별시</option>
+            <option value="부산광역시">부산광역시</option>
+            <option value="대구광역시">대구광역시</option>
+            <option value="인천광역시">인천광역시</option>
+            <option value="광주광역시">광주광역시</option>
+            <option value="대전광역시">대전광역시</option>
+            <option value="울산광역시">울산광역시</option>
+            <option value="세종특별자치시">세종특별자치시</option>
+            <option value="경기도">경기도</option>
+            <option value="강원도">강원도</option>
+            <option value="충청북도">충청북도</option>
+            <option value="충청남도">충청남도</option>
+            <option value="전라북도">전라북도</option>
+            <option value="전라남도">전라남도</option>
+            <option value="경상북도">경상북도</option>
+            <option value="경상남도">경상남도</option>
+            <option value="제주특별자치도">제주특별자치도</option>>
+        </select>
+     </nav>
+       <section class="cards-wrap">
+         <article class="card-top ">
+     <a class="card-link " data-event-label="103529666" href="/articles/103529666">
+       <div class="card-photo">
+           <img alt="캠핑용품 정리 합니다." src="https://dnvefa72aowie.cloudfront.net/origin/article/202007/9f8b8e2a104950b91c32f39567ebb4d6c126bf6ad5dd41e3e27cfea530ff82bb.webp?q=82&amp;s=300x300&amp;t=crop" />
+       </div>
+       <div class="card-desc">
+         <h2 class="card-title">~~팝니다</h2>
+         <div class="card-region-name">
+           지역 이름
+         </div>
+         <div class="card-price ">
+           가격
+         </div>
+       </div>
+   </a></article><article class="card-top ">
+     <a class="card-link " data-event-label="103540056" href="/articles/103540056">
+       <div class="card-photo">
+           <img alt="ort 1단계 ~9단계" src="https://dnvefa72aowie.cloudfront.net/origin/article/202007/2f3ae553a8519d3bf58dbeaf6a7fa653c61d4255462eed9028964cb74ea3dd6e.webp?q=82&amp;s=300x300&amp;t=crop" />
+       </div>
+       <div class="card-desc">
+         <h2 class="card-title">ort 1단계 ~9단계</h2>
+         <div class="card-region-name">
+           대구 수성구 범어2동
+         </div>
+         <div class="card-price ">
+           55,000원
+         </div>
+       </div>
+   </a></article><article class="card-top ">
+     <a class="card-link " data-event-label="103653052" href="/articles/103653052">
+       <div class="card-photo">
+           <img alt="제습기" src="https://dnvefa72aowie.cloudfront.net/origin/article/202007/91a29ad2e0374b5f27c14d5c123943450d6c23062e898a770b13259b734f9121.webp?q=82&amp;s=300x300&amp;t=crop" />
+       </div>
+       <div class="card-desc">
+         <h2 class="card-title">제습기</h2>
+         <div class="card-region-name">
+           부산 영도구 대평동1가
+         </div>
+         <div class="card-price ">
+           30,000원
+         </div>
+       </div>
+   </a></article><article class="card-top ">
+     <a class="card-link " data-event-label="103616701" href="/articles/103616701">
+       <div class="card-photo">
+           <img alt="급))한샘 철제 선반" src="https://dnvefa72aowie.cloudfront.net/origin/article/202007/EBC92E2DB95E35BDA6E287205966A63C1112FE81E4BDB7BB79CE3E8327B0231F.jpg?q=82&amp;s=300x300&amp;t=crop" />
+       </div>
+       <div class="card-desc">
+         <h2 class="card-title">급))한샘 철제 선반</h2>
+         <div class="card-region-name">
+           서울 강서구 가양제1동
+         </div>
+         <div class="card-price ">
+           5,000원
+         </div>
+       </div>
+   </a></article><article class="card-top ">
+     <a class="card-link " data-event-label="103602293" href="/articles/103602293">
+       <div class="card-photo">
+           <img alt="제습기 팔아요" src="https://dnvefa72aowie.cloudfront.net/origin/article/202007/a66ca82562928fc07810fe69cad59a2a72854df63b3a8af6ae28590acb895f06.webp?q=82&amp;s=300x300&amp;t=crop" />
+       </div>
+       <div class="card-desc">
+         <h2 class="card-title">제습기 팔아요</h2>
+         <div class="card-region-name">
+           전북 전주시 완산구 효자4동
+         </div>
+         <div class="card-price ">
+           50,000원
+         </div>
+       </div>
+   </a></article><article class="card-top ">
+     <a class="card-link " data-event-label="103643355" href="/articles/103643355">
+       <div class="card-photo">
+           <img alt="LG디오스 냉장고 팝니다." src="https://dnvefa72aowie.cloudfront.net/origin/article/202007/863b9468a4053f17d30fcffc8c90014004a521042b613108720fe7b161d713a9.webp?q=82&amp;s=300x300&amp;t=crop" />
+       </div>
+       <div class="card-desc">
+         <h2 class="card-title">LG디오스 냉장고 팝니다.</h2>
+         <div class="card-region-name">
+           서울 강남구 삼성2동
+         </div>
+         <div class="card-price ">
+           40,000원
+         </div>
+       </div>
+   </a></article><article class="card-top ">
+     <a class="card-link " data-event-label="103633325" href="/articles/103633325">
+       <div class="card-photo">
+           <img alt="딱딱한 복숭아" src="https://dnvefa72aowie.cloudfront.net/origin/article/202007/e86d71f5c7c9e050a8a08138e7ed75a65c082f125cd79f2d7545da433c09778a.webp?q=82&amp;s=300x300&amp;t=crop" />
+       </div>
+       <div class="card-desc">
+         <h2 class="card-title">딱딱한 복숭아</h2>
+         <div class="card-region-name">
+           세종시  고운동
+         </div>
+         <div class="card-price ">
+           10,000원
+         </div>
+       </div>
+   </a></article><article class="card-top ">
+     <a class="card-link " data-event-label="103651830" href="/articles/103651830">
+       <div class="card-photo">
+           <img alt="자전거" src="https://dnvefa72aowie.cloudfront.net/origin/article/202007/dca779e8d022aaedea30adf26e048607d0505b63d98b2aadb6a23369089db512.webp?q=82&amp;s=300x300&amp;t=crop" />
+       </div>
+       <div class="card-desc">
+         <h2 class="card-title">자전거</h2>
+         <div class="card-region-name">
+           서울 송파구 잠실3동
+         </div>
+         <div class="card-price ">
+           30,000원
+         </div>
+       </div>
+   </a></article>
+       </section>
+        <button class="btn btn-dark" value="글쓰기">
+          <a href="{% url 'write' %}" style = color:black;>글쓰기</a>
+        </button>
+
+{% endblock %}

@@ -1,0 +1,126 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>내가 가는 중이다</title>
+    <style>
+        body {
+            font-family: "Apple SD Gothic Neo", "Malgun Gothic", 'Nanum Gothic', sans-serif;
+            min-height: calc(100% - 77px);
+            position: relative;
+        }
+
+       #fixed-bar{
+           width: 100%;
+           position: fixed;
+           top: 0;
+           right: 0;
+           left: 0;
+           z-index: 100;
+           background-color: #ffffff;
+       }
+        #fixed-bar-wrap{
+            width: 670px;
+            margin: 0 auto;
+            padding: 17px 0;
+            position: relative;
+        }
+
+        .fixed-logo{
+            width: 132px;
+            vertical-align: text-bottom;
+            margin-bottom: 5px;
+        }
+
+        #fixed-bar-search{
+            position: absolute;
+            left: 150px;
+            top: 35px;
+            border-radius: 4px;
+            border: solid 1px #eb3b3b;
+            text-decoration: none;
+            padding: 1px 8px 1px 14px;
+            height: 40px;
+        }
+
+        .search-input-wrap{
+            position: relative;
+            padding-right: 40px;
+        }
+
+        .sr-only{
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0 0 0 0);
+            border: 0;
+        }
+
+        .fixed-search-input{
+            width: 440px;
+            height: 38px;
+            border: none;
+            font-size: 18px;
+            color: #212529;
+            margin-right: 6px;
+        }
+
+        button{
+            background: none;
+            color: inherit;
+            border: none;
+            padding: 0;
+            font: inherit;
+            cursor: pointer;
+            outline: inherit;
+        }
+
+        .fixed-search-icon{
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 26px;
+            height: 26px;
+            fill: #eb3b3b;
+            padding: 7px 7px;
+        }
+        .map{
+            width: 980px;
+            background-color: aqua;
+            color: black;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <header id="fixed-bar">
+        <div id="fixed-bar-wrap">
+            <h1 id="fixed-bar-logo-title">
+                <a href="{% url 'home' %}">
+                    <span class="sr-only">내가 가는 중</span>
+                    <img class="fixed-logo" src="https://d1unjqcospf8gs.cloudfront.net/assets/home/base/header/logo-basic-00b7e471b721ce9db8b0758c05a84684413c8aef1ad54caa0f3fcbe7328c947f.svg" alt="내가 가는 중" />
+                </a>
+            </h1>
+            <section id="fixed-bar-search">
+                <div class="search-input-wrap">
+                    <span class="sr-only">검색</span>
+                    <input type="text" name="header-search-input" id="header-search-input" class="fixed-search-input" placeholder="search yout location or products" />
+                    <button id="header-search-button">
+                        <img src="https://d1unjqcospf8gs.cloudfront.net/assets/home/base/header/search-icon-db20a2e9e6b0fc922b44982d451cf1c967c86e8e8df270e71c300832a6f31f1a.svg" alt="Search" class="fixed-search-icon" />
+                    </button>
+                </div>
+            </section>
+        </div>
+    </header>
+<div class="container">
+  {% block content %}
+  {% endblock %}
+</div>
+    
+</body>
+</html>
