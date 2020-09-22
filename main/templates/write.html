@@ -1,8 +1,4 @@
 
-{% extends 'base.html' %}
-
-{% block content %}
-
 <!DOCTYPE html>
 
 <html>
@@ -295,10 +291,6 @@
         right: 30px;
         width: 322px;
     }
-
-    .mb-3{
-        margin-top: 10px;
-    }
 </style>
 
 <script>
@@ -350,7 +342,8 @@ body {
       <div class="container" role="main">
 
          <h2>구매 글 작성</h2>
-            <select name="region1" id="region1" onchange="changeRegion(&#39;r1&#39;, this.value)" class="hot-articles-nav-select"><option value="">지역을 선택하세요</option>
+            <select name="region1" id="region1" onchange="changeRegion(&#39;r1&#39;, this.value)" class="hot-articles-nav-select">
+                <option value="">지역을 선택하세요</option>
                 <option value="서울특별시">서울특별시</option>
                 <option value="부산광역시">부산광역시</option>
                 <option value="대구광역시">대구광역시</option>
@@ -370,7 +363,8 @@ body {
                 <option value="제주특별자치도">제주특별자치도</option></select>
 
                 
-                <select name="region1" id="region1" onchange="changeRegion(&#39;r1&#39;, this.value)" class="hot-articles-nav-select"><option value="">카테고리를 선택하세요</option>
+                <select name="category" id="category" onchange="changeRegion(&#39;r1&#39;, this.value)" class="hot-articles-nav-select">
+                    <option value="">카테고리를 선택하세요</option>
                     <option value="여성의류">여성의류</option>
                     <option value="패션잡화">패션잡화</option>
                     <option value="남성의류">남성의류</option>
@@ -385,7 +379,7 @@ body {
                     <option value="기타">기타</option></select>
 
 
-         <form name="form" id="form" role="form" method="post" action="${pageContext.request.contextPath}/board/saveBoard">
+         <form name="form" id="form" role="form" method="post" action="{% url 'create' %}">
 
             <div class="mb-3">
 
@@ -398,6 +392,33 @@ body {
             
 
             <div class="mb-3">
+
+               <label for="place">거래 위치</label>
+
+               <input type="text" class="form-control" name="place" id="place" placeholder="위치를 입력해 주세요">
+
+                </div>
+                
+
+  
+                <div class="mb-3">
+                    <label for="state">상태</label>
+              
+                    <label><input type="radio" name="state" value="중고상품"> 중고상품</label>
+                    <label><input type="radio" name="state" value="새상품"> 새상품</label>
+                </div>
+
+
+
+                <div class="mb-3">
+                    <label for="swap">교환</label>
+
+                    <label><input type="radio" name="swap" value="교환가능"> 교환가능</label>
+                    <label><input type="radio" name="swap" value="교환불가"> 교환불가</label>
+                </div>
+
+
+                <div class="mb-3">
 
                <label for="price">판매 가격</label>
 
@@ -471,8 +492,12 @@ body {
          <div >
 
             <button type="button" class="btn btn-sm btn-primary" id="btnSave">저장</button>
+                
+                <button type="button" class="btn btn-sm btn-primary" id="btnChange">수정</button>
+                
+                <button type="button" class="btn btn-sm btn-primary" id="btnList">목록</button>
+                
 
-            <button type="button" class="btn btn-sm btn-primary" id="btnList">목록</button>
 
          </div>
 
@@ -483,5 +508,3 @@ body {
 </body>
 
 </html>
-
-{%endblock%}
