@@ -10,5 +10,5 @@ urlpatterns = [
     path('write/', views.write, name='write'),
     path('account/', views.account, name='account'),
     path('create/', views.create, name='create'),
-    
+    path('newproduct/', views.productpost, name='newproduct'),
 ]

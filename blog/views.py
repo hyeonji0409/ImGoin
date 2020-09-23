@@ -7,7 +7,7 @@ from blog.models import Post
 class PostLV(ListView):
     model = Post
     context_object_name = 'posts'
-    paginate_by = 2
+    paginate_by = 10
 
 class PostDV(DetailView):
     model = Post
@@ -35,6 +35,6 @@ class PostTAV(TodayArchiveView):
     model = Post
     date_field = 'mod_date'
 
-
-
-
+#def post_list(request):
+#    psots = Post.objects.all()
+#    return render(request, 'blog/post_list.html', {'blog': posts})

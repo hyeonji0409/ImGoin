@@ -10,3 +10,6 @@ class Market(models.Model):
     file_route = models.CharField(max_length=100)
     tag = models.CharField(max_length=200)
 
+class Product(models.Model):
+    title = models.CharField(max_length=200)
+    body = models.TextField()

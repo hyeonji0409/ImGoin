@@ -1,15 +1,62 @@
+<style>
+    .table_table-boardered{
+        border-collapse: collapse;
+        text-align: center;
+        line-height: 1.5;
+        border-top: 1px solid #ccc;
+        border-left: 3px solid #369;
+        margin: 20px 10px;
+
+    }
+
+    .table_table-boardered th{
+        width: 147px;
+        padding: 10px;
+        font-weight: bold;
+        vertical-align: top;
+        color: #153d73;
+        border-right: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .table_table-boardered td{
+        width: 349px;
+        padding: 10px;
+        vertical-align: top;
+        border-right: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+    }
+</style>
+
 
 <h2>배달 의뢰 페이지</h2>
-<span>
-    <a href="{% url 'blog:post_archive' %}">아카이브</a>
-</span>
 
-<p>
+<div class="container">
+    <table class="table_table-boardered">
+        <tbody>
+            <tr>
+                <th>제목</th>
+                <th>시간</th>
+            </tr>
+            {% for post in posts %}
+            <tr>
+                <td> <h3><a href="{{post.get_absolute_url}}">{{post.title}}</a></h3></td>
+                <td>{{post.mod_date|date:"N d, Y"}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<!--
     {% for post in posts %}
+<p>
+    
     <h3><a href="{{post.get_absolute_url}}">{{post.title}}</a></h3>
     {{post.mod_date|date:"N d, Y"}}
     {% endfor %}
 </p>
+-->
 <br>
 <div>
     {% if page_obj.has_previous %}
