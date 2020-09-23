@@ -10,7 +10,6 @@
     }
 
     .table_table-boardered th{
-        width: 147px;
         padding: 10px;
         font-weight: bold;
         vertical-align: top;
@@ -20,7 +19,6 @@
     }
 
     .table_table-boardered td{
-        width: 349px;
         padding: 10px;
         vertical-align: top;
         border-right: 1px solid #ccc;
@@ -35,12 +33,16 @@
     <table class="table_table-boardered">
         <tbody>
             <tr>
-                <th>제목</th>
-                <th>시간</th>
+                <th style="width: 50px;">목록</th>
+                <th style="width: 200px;">제목</th>
+                <th style="width: 700px;">내용</th>
+                <th style="width: 150px;">시간</th>
             </tr>
             {% for post in posts %}
             <tr>
+                <td>{{post.id}}</td>
                 <td> <h3><a href="{{post.get_absolute_url}}">{{post.title}}</a></h3></td>
+                <td>{{post.content}}</td>
                 <td>{{post.mod_date|date:"N d, Y"}}</td>
             </tr>
             {% endfor %}
