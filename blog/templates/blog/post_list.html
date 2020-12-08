@@ -6,6 +6,7 @@
         border-top: 1px solid #ccc;
         border-left: 3px solid #369;
         margin: 20px 10px;
+        
 
     }
 
@@ -41,7 +42,7 @@
             {% for post in posts %}
             <tr>
                 <td>{{post.id}}</td>
-                <td> <h3><a href="{{post.get_absolute_url}}">{{post.title}}</a></h3></td>
+                <td> <h3><a href="{{post.get_absolute_url}}" style="text-decoration:none; color: rgb(62, 88, 160);">{{post.title}}</a></h3></td>
                 <td>{{post.content}}</td>
                 <td>{{post.mod_date|date:"N d, Y"}}</td>
             </tr>
